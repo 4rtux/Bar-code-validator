@@ -9,6 +9,24 @@ class OrderManager:
     def ValidateEAN13( self, eAn13 ):
         # PLEASE INCLUDE HERE THE CODE FOR VALIDATING THE GUID
         # RETURN TRUE IF THE GUID IS RIGHT, OR FALSE IN OTHER CASE
+        if len(eAn13) != 13:
+            return False
+        impares = 0
+        pares = 0
+        for i in range(len(eAn13)-1):
+            if i % 2 == 0:
+                impares = impares + int(eAn13[i])
+            else:
+                pares = pares + int(eAn13[i])
+        impares = impares*3
+        total = impares+pares
+        dec = total // 10
+        dec = (dec + 1) * 10
+        digito_control = dec - total
+        if digito_control % 10 == 0:
+            digito_control = 0
+        if int(eAn13[12]) != digito_control:
+            return False
         return True
 
     def ReadproductcodefromJSON( self, fi ):
