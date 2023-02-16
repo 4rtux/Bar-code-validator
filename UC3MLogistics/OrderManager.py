@@ -2,6 +2,7 @@ import json
 from .OrderMangementException import OrderManagementException
 from .OrderRequest import OrderRequest
 
+
 class OrderManager:
     def __init__(self):
         pass

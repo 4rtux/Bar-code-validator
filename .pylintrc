@@ -149,15 +149,15 @@ class-attribute-naming-style=camelCase
 #class-attribute-rgx=
 
 # Naming style matching correct class constant names.
-class-const-naming-style=
+class-const-naming-style=UPPER_CASE
 
 # Regular expression matching correct class constant names. Overrides class-
 # const-naming-style. If left empty, class constant names will be checked with
 # the set naming style.
-#class-const-rgx=CT_[a-z0-9]{2-20}$
+class-const-rgx=CT_[a-z0-9]{2-20}$
 
 # Naming style matching correct class names.
-class-naming-style=PascalCase
+class-naming-style=UPPER_CASE
 
 # Regular expression matching correct class names. Overrides class-naming-
 # style. If left empty, class names will be checked with the set naming style.
@@ -169,14 +169,14 @@ const-naming-style=UPPER_CASE
 # Regular expression matching correct constant names. Overrides const-naming-
 # style. If left empty, constant names will be checked with the set naming
 # style.
-#const-rgx=
+const-rgx=CT_[a-z0-9]{2-20}$
 
 # Minimum line length for functions/classes that require docstrings, shorter
 # ones are exempt.
-docstring-min-length=-1
+docstring-min-length=5
 
 # Naming style matching correct function names.
-function-naming-style=snake_case
+function-naming-style=PascalCase
 
 # Regular expression matching correct function names. Overrides function-
 # naming-style. If left empty, function names will be checked with the set
@@ -189,14 +189,16 @@ good-names=i,
            k,
            ex,
            Run,
-           _
+           _,
+           var,
+           total
 
 # Good variable names regexes, separated by a comma. If names match any regex,
 # they will always be accepted
 good-names-rgxs=
 
 # Include a hint for the correct naming format with invalid-name.
-include-naming-hint=no
+include-naming-hint=yes
 
 # Naming style matching correct inline iteration names.
 inlinevar-naming-style=any
@@ -207,7 +209,7 @@ inlinevar-naming-style=any
 #inlinevar-rgx=
 
 # Naming style matching correct method names.
-method-naming-style=snake_case
+method-naming-style=camelCase
 
 # Regular expression matching correct method names. Overrides method-naming-
 # style. If left empty, method names will be checked with the set naming style.
@@ -249,7 +251,7 @@ variable-naming-style=snake_case
 [CLASSES]
 
 # Warn about protected attribute access inside special methods
-check-protected-access-in-special-methods=no
+check-protected-access-in-special-methods=yes
 
 # List of method names used to declare (i.e. assign) instance attributes.
 defining-attr-methods=__init__,
@@ -304,7 +306,7 @@ max-parents=7
 max-public-methods=20
 
 # Maximum number of return / yield for function / method body.
-max-returns=6
+max-returns=4
 
 # Maximum number of statements in function / method body.
 max-statements=50
@@ -325,7 +327,7 @@ overgeneral-exceptions=builtins.BaseException,builtins.Exception
 expected-line-ending-format=
 
 # Regexp for a line that is allowed to be longer than the limit.
-ignore-long-lines=^\s*(# )?<?https?://\S+>?$
+ignore-long-lines=
 
 # Number of spaces of indent required inside a hanging or continued line.
 indent-after-paren=4
@@ -335,7 +337,7 @@ indent-after-paren=4
 indent-string='    '
 
 # Maximum number of characters on a single line.
-max-line-length=100
+max-line-length=125
 
 # Maximum number of lines in a module.
 max-module-lines=1000
@@ -484,7 +486,7 @@ msg-template=
 #output-format=
 
 # Tells whether to display a full report or only the messages.
-reports=no
+reports=yes
 
 # Activate the evaluation score.
 score=yes
@@ -622,7 +624,7 @@ dummy-variables-rgx=_+$|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|^ignored_|^unused_
 ignored-argument-names=_.*|^ignored_|^unused_
 
 # Tells whether we should check for unused import in __init__ files.
-init-import=no
+init-import=yes
 
 # List of qualified module names which can have objects that can redefine
 # builtins.
