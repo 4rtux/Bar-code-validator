@@ -1,47 +1,63 @@
-from UC3MLogistics import OrderManager
+"""
+modulo de Main
+"""
 import string
 from barcode import EAN13
 from barcode.writer import ImageWriter
+from uc3m_logistics import ORDERMANAGER
+
 
 #GLOBAL VARIABLES
-letters = string.ascii_letters + string.punctuation + string.digits
-shift = 3
+var_letter = string.ascii_letters + string.punctuation + string.digits
+CT_shifts = 3
 
 
 def Encode(word):
+    """
+    :param word:
+    :return: encoded
+    """
     encoded = ""
     for letter in word:
         if letter == ' ':
             encoded = encoded + ' '
         else:
-            x = (letters.index(letter) + shift) % len(letters)
-            encoded = encoded + letters[x]
+            var_x = (var_letter.index(letter) + CT_shifts) % len(var_letter)
+            encoded = encoded + var_letter[var_x]
     return encoded
 
 def Decode(word):
+    """
+    :param word:
+    :return: encoded
+    """
     encoded = ""
     for letter in word:
         if letter == ' ':
             encoded = encoded + ' '
         else:
-            x = (letters.index(letter) - shift) % len(letters)
-            encoded = encoded + letters[x]
+            var_x = (var_letter.index(letter) - CT_shifts) % len(var_letter)
+            encoded = encoded + var_letter[var_x]
     return encoded
 
-def main():
-    mng = OrderManager()
-    res = mng.ReadproductcodefromJSON("test.json")
-    strRes = res.__str__()
-    print(strRes)
-    EncodeRes = Encode(strRes)
-    print("Encoded Res "+ EncodeRes)
-    DecodeRes = Decode(EncodeRes)
-    print("Decoded Res: " + DecodeRes)
-    print("Codew: " + res.PRODUCT_CODE)
-    with open("./barcodeEan13.jpg", 'wb') as f:
-        iw = ImageWriter()
-        EAN13(res.PRODUCT_CODE, writer=iw).write(f)
+def Main():
+    """
+    definición de la funcion Main
+    no recibe parametros ni returns
+    """
+    mng = ORDERMANAGER()
+    res = mng.readProductCodeFromJson("test.json")
+    str_res = res.__str__()
+    print(str_res)
+    encode_res = Encode(str_res)
+    print("Encoded Res "+ encode_res)
+    decode_res = Decode(encode_res)
+    print("Decoded Res: " + decode_res)
+    print("Codew: " + res.product_code)
+    with open("./barcodeEan13.jpg", 'wb') as var_f:
+        var_iw = ImageWriter()
+        EAN13(res.product_code, writer=var_iw).write(var_f)
 
 
 if __name__ == "__main__":
-    main()
+    Main()

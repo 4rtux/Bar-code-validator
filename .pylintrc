@@ -149,12 +149,12 @@ class-attribute-naming-style=camelCase
 #class-attribute-rgx=
 
 # Naming style matching correct class constant names.
-class-const-naming-style=UPPER_CASE
+class-const-naming-style = UPPER_CASE
 
 # Regular expression matching correct class constant names. Overrides class-
 # const-naming-style. If left empty, class constant names will be checked with
 # the set naming style.
-class-const-rgx=CT_[a-z0-9]{2-20}$
+class-const-rgx=[CT_][a-z0-9]{2-20}$
 
 # Naming style matching correct class names.
 class-naming-style=UPPER_CASE
