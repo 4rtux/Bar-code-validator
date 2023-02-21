@@ -6,7 +6,7 @@ import json
 from datetime import datetime
 
 
-class ORDERREQUEST:
+class ORDER_REQUEST:
     """
     clase Order Request.
     """

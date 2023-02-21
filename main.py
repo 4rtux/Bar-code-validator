@@ -4,7 +4,7 @@ modulo de Main
 import string
 from barcode import EAN13
 from barcode.writer import ImageWriter
-from uc3m_logistics import ORDERMANAGER
+from uc3m_logistics import ORDER_MANAGER
 
 
 #GLOBAL VARIABLES
@@ -45,12 +45,12 @@ def Main():
     definición de la funcion Main
     no recibe parametros ni returns
     """
-    mng = ORDERMANAGER()
+    mng = ORDER_MANAGER()
     res = mng.readProductCodeFromJson("test.json")
-    str_res = res.__str__()
+    str_res = str(res)
     print(str_res)
     encode_res = Encode(str_res)
-    print("Encoded Res "+ encode_res)
+    print("Encoded Res " + encode_res)
     decode_res = Decode(encode_res)
     print("Decoded Res: " + decode_res)
     print("Codew: " + res.product_code)

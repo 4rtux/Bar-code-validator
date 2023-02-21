@@ -1,7 +1,7 @@
 """
 Módulo en el que se define la clase "Order management exception"
 """
-class ORDERMANAGEMENTEXCEPTION(Exception):
+class ORDER_MANAGEMENT_EXCEPTION(Exception):
     """
     Clase OrderManagementException.
     """
@@ -15,5 +15,5 @@ class ORDERMANAGEMENTEXCEPTION(Exception):
         return self.__message
 
     @message.setter
-    def message(self,value):
+    def message(self, value):
         self.__message = value

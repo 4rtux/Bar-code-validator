@@ -3,11 +3,11 @@ Módulo Order Manager. Encargado de leer y validar el codigo recibido.
 """
 
 import json
-from .order_mangement_exception import ORDERMANAGEMENTEXCEPTION
-from .order_request import ORDERREQUEST
+from .order_management_exception import ORDER_MANAGEMENT_EXCEPTION
+from .order_request import ORDER_REQUEST
 
 
-class ORDERMANAGER:
+class ORDER_MANAGER:
     """
     Clase ORDERMANAGER.
     """
@@ -15,7 +15,7 @@ class ORDERMANAGER:
         """
         Funcion constructora de la clase ORDERMANAGER
         """
-        pass
+
 
     def validateEAN13(self, eAn13):
         """
@@ -52,22 +52,22 @@ class ORDERMANAGER:
         :return: Nada. Lee y si hay error lanza una excepción
         """
         try:
-            with open(varFi) as var_f:
+            with open(varFi, encoding="UTF-8") as var_f:
                 data = json.load(var_f)
         except FileNotFoundError as var_e:
-            raise ORDERMANAGEMENTEXCEPTION("Wrong file or file path") from var_e
+            raise ORDER_MANAGEMENT_EXCEPTION("Wrong file or file path") from var_e
         except json.JSONDecodeError as var_e:
-            raise ORDERMANAGEMENTEXCEPTION("JSON Decode Error - Wrong JSON Format") from var_e
+            raise ORDER_MANAGEMENT_EXCEPTION("JSON Decode Error - Wrong JSON Format") from var_e
 
 
         try:
             product = data["id"]
             var_ph = data["phoneNumber"]
-            req = ORDERREQUEST(product, var_ph)
+            req = ORDER_REQUEST(product, var_ph)
         except KeyError as var_e:
-            raise ORDERMANAGEMENTEXCEPTION("JSON Decode Error - Invalid JSON Key") from var_e
+            raise ORDER_MANAGEMENT_EXCEPTION("JSON Decode Error - Invalid JSON Key") from var_e
         if not self.validateEAN13(product):
-            raise ORDERMANAGEMENTEXCEPTION("Invalid PRODUCT code")
+            raise ORDER_MANAGEMENT_EXCEPTION("Invalid PRODUCT code")
 
         # Close the file
         return req
