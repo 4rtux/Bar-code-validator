@@ -8,7 +8,7 @@ from uc3m_logistics import ORDERMANAGER
 
 
 #GLOBAL VARIABLES
-var_letter = string.ascii_letters + string.punctuation + string.digits
+CT_letter = string.ascii_letters + string.punctuation + string.digits
 CT_shifts = 3
 
 
@@ -22,8 +22,8 @@ def Encode(word):
         if letter == ' ':
             encoded = encoded + ' '
         else:
-            var_x = (var_letter.index(letter) + CT_shifts) % len(var_letter)
-            encoded = encoded + var_letter[var_x]
+            var_x = (CT_letter.index(letter) + CT_shifts) % len(CT_letter)
+            encoded = encoded + CT_letter[var_x]
     return encoded
 
 def Decode(word):
@@ -36,8 +36,8 @@ def Decode(word):
         if letter == ' ':
             encoded = encoded + ' '
         else:
-            var_x = (var_letter.index(letter) - CT_shifts) % len(var_letter)
-            encoded = encoded + var_letter[var_x]
+            var_x = (CT_letter.index(letter) - CT_shifts) % len(CT_letter)
+            encoded = encoded + CT_letter[var_x]
     return encoded
 
 def Main():
