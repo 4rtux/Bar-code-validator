@@ -3,7 +3,6 @@ Modulo de order request.
 """
 
 import json
-from datetime import datetime
 
 
 class ORDER_REQUEST:
@@ -13,8 +12,8 @@ class ORDER_REQUEST:
     def __init__( self, idcode, phoneNumber ):
         self.__phone_number = phoneNumber
         self.__idcode = idcode
-        justnow = datetime.utcnow()
-        self.__time_stamp = datetime.timestamp(justnow)
+        #justnow = datetime.utcnow()
+        #self.__time_stamp = datetime.timestamp(justnow)
 
     def __str__(self):
         return "OrderRequest:" + json.dumps(self.__dict__)
